@@ -10,13 +10,20 @@
 
 @interface ViewController ()
 
+@property(weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // TODO(developer) Configure the sign-in button look/feel
+    
+    [GIDSignIn sharedInstance].uiDelegate = self;
+
+    // Uncomment to automatically sign in the user.
+    //[[GIDSignIn sharedInstance] signInSilently];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,4 +31,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)signIn:(GIDSignIn *)signIn
+didSignInForUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    
+    // Perform any operations on signed in user here.
+    // ...
+}
+
+
 @end
+
+

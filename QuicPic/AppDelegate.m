@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HomePage.h"
 
 @interface AppDelegate ()
 
@@ -14,10 +15,90 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [FIRApp configure];
+    
+    //NSError* configureError;
+    //[[GGLContext sharedInstance] configureWithError: &configureError];
+    //NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    
+    [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
+    [GIDSignIn sharedInstance].delegate = self;
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                      annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:sourceApplication
+                                      annotation:annotation];
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+didSignInForUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    if (error == nil) {
+        
+        GIDAuthentication *authentication = user.authentication;
+        FIRAuthCredential *credential =
+        [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
+                                         accessToken:authentication.accessToken];
+        
+        [[FIRAuth auth] signInWithCredential:credential
+                                  completion:^(FIRUser *user, NSError *error) {
+                                      // ...
+                                  }];
+        
+        NSString *userId = user.userID;                  // For client-side use only!
+        NSString *idToken = user.authentication.idToken; // Safe to send to the server
+        NSString *fullName = user.profile.name;
+        NSString *givenName = user.profile.givenName;
+        NSString *familyName = user.profile.familyName;
+        NSString *email = user.profile.email;
+        // [START_EXCLUDE]
+        NSDictionary *statusText = @{@"statusText":
+                                         [NSString stringWithFormat:@"Signed in user: %@",
+                                          fullName]};
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"ToggleAuthUINotification"
+         object:nil
+         userInfo:statusText];
+        
+        
+        //http://stackoverflow.com/questions/12305636/how-to-perform-segue-in-appdelegate
+        //http://stackoverflow.com/questions/14181588/performing-segue-from-appdelegate
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        HomePage* home = [storyboard instantiateViewControllerWithIdentifier:@"Home"];
+        self.window.rootViewController = home;
+        
+    } else {
+        
+        NSLog(@"%@", error.localizedDescription);
+    }
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+didDisconnectWithUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    // Perform any operations when the user disconnects from app here.
+    // ...
+    NSDictionary *statusText = @{@"statusText": @"Disconnected user" };
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"ToggleAuthUINotification"
+     object:nil
+     userInfo:statusText];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

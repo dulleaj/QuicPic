@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A77DC021D24A699005C3E7A /* HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A77DC011D24A699005C3E7A /* HomePage.m */; };
 		2A82DDA21D1B51D4001BC5F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A82DDA11D1B51D4001BC5F9 /* main.m */; };
 		2A82DDA51D1B51D4001BC5F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A82DDA41D1B51D4001BC5F9 /* AppDelegate.m */; };
 		2A82DDA81D1B51D4001BC5F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A82DDA71D1B51D4001BC5F9 /* ViewController.m */; };
@@ -14,9 +15,13 @@
 		2A82DDAD1D1B51D4001BC5F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A82DDAC1D1B51D4001BC5F9 /* Assets.xcassets */; };
 		2A82DDB01D1B51D4001BC5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A82DDAE1D1B51D4001BC5F9 /* LaunchScreen.storyboard */; };
 		2A82DDB81D1B61F2001BC5F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A82DDB71D1B61F2001BC5F9 /* GoogleService-Info.plist */; };
+		2AAA8DD21D343FC0007F3AEB /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAA8DD11D343FC0007F3AEB /* CollectionViewCell.m */; };
+		3204A68D1C88B8FB0B821087 /* libPods-QuicPic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB16AFAF145F4807A07372E /* libPods-QuicPic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A77DC001D24A699005C3E7A /* HomePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePage.h; sourceTree = "<group>"; };
+		2A77DC011D24A699005C3E7A /* HomePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePage.m; sourceTree = "<group>"; };
 		2A82DD9D1D1B51D3001BC5F9 /* QuicPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuicPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A82DDA11D1B51D4001BC5F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A82DDA31D1B51D4001BC5F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +33,11 @@
 		2A82DDAF1D1B51D4001BC5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A82DDB11D1B51D4001BC5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A82DDB71D1B61F2001BC5F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2AAA8DD01D343FC0007F3AEB /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		2AAA8DD11D343FC0007F3AEB /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		48CAEA3587AD0DBC226D505C /* Pods-QuicPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuicPic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuicPic/Pods-QuicPic.debug.xcconfig"; sourceTree = "<group>"; };
+		4CB16AFAF145F4807A07372E /* libPods-QuicPic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QuicPic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87223C6B06BA44D7D675590 /* Pods-QuicPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuicPic.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuicPic/Pods-QuicPic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3204A68D1C88B8FB0B821087 /* libPods-QuicPic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0427009D77BE34CBE9EBA90A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CB16AFAF145F4807A07372E /* libPods-QuicPic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2A82DD941D1B51D3001BC5F9 = {
 			isa = PBXGroup;
 			children = (
 				2A82DD9F1D1B51D4001BC5F9 /* QuicPic */,
 				2A82DD9E1D1B51D3001BC5F9 /* Products */,
+				B3AC975A3F8116296BEA62BE /* Pods */,
+				0427009D77BE34CBE9EBA90A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,9 +83,13 @@
 			children = (
 				2A82DDA31D1B51D4001BC5F9 /* AppDelegate.h */,
 				2A82DDA41D1B51D4001BC5F9 /* AppDelegate.m */,
+				2A82DDA91D1B51D4001BC5F9 /* Main.storyboard */,
 				2A82DDA61D1B51D4001BC5F9 /* ViewController.h */,
 				2A82DDA71D1B51D4001BC5F9 /* ViewController.m */,
-				2A82DDA91D1B51D4001BC5F9 /* Main.storyboard */,
+				2A77DC001D24A699005C3E7A /* HomePage.h */,
+				2A77DC011D24A699005C3E7A /* HomePage.m */,
+				2AAA8DD01D343FC0007F3AEB /* CollectionViewCell.h */,
+				2AAA8DD11D343FC0007F3AEB /* CollectionViewCell.m */,
 				2A82DDAC1D1B51D4001BC5F9 /* Assets.xcassets */,
 				2A82DDAE1D1B51D4001BC5F9 /* LaunchScreen.storyboard */,
 				2A82DDB11D1B51D4001BC5F9 /* Info.plist */,
@@ -82,6 +107,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B3AC975A3F8116296BEA62BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48CAEA3587AD0DBC226D505C /* Pods-QuicPic.debug.xcconfig */,
+				E87223C6B06BA44D7D675590 /* Pods-QuicPic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A82DDB41D1B51D4001BC5F9 /* Build configuration list for PBXNativeTarget "QuicPic" */;
 			buildPhases = (
+				2502952A2E45B92A0E303D96 /* [CP] Check Pods Manifest.lock */,
 				2A82DD991D1B51D3001BC5F9 /* Sources */,
 				2A82DD9A1D1B51D3001BC5F9 /* Frameworks */,
 				2A82DD9B1D1B51D3001BC5F9 /* Resources */,
+				8715DA7F0682EEF9C5951C12 /* [CP] Embed Pods Frameworks */,
+				FBDF0E7E96835DE28B05FADD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,14 +186,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2502952A2E45B92A0E303D96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8715DA7F0682EEF9C5951C12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuicPic/Pods-QuicPic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBDF0E7E96835DE28B05FADD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuicPic/Pods-QuicPic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2A82DD991D1B51D3001BC5F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2A82DDA81D1B51D4001BC5F9 /* ViewController.m in Sources */,
+				2AAA8DD21D343FC0007F3AEB /* CollectionViewCell.m in Sources */,
 				2A82DDA51D1B51D4001BC5F9 /* AppDelegate.m in Sources */,
 				2A82DDA21D1B51D4001BC5F9 /* main.m in Sources */,
+				2A77DC021D24A699005C3E7A /* HomePage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +355,7 @@
 		};
 		2A82DDB51D1B51D4001BC5F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48CAEA3587AD0DBC226D505C /* Pods-QuicPic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QuicPic/Info.plist;
@@ -279,6 +367,7 @@
 		};
 		2A82DDB61D1B51D4001BC5F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E87223C6B06BA44D7D675590 /* Pods-QuicPic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QuicPic/Info.plist;
@@ -307,6 +396,7 @@
 				2A82DDB61D1B51D4001BC5F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
