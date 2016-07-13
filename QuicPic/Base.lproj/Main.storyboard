@@ -78,18 +78,27 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Photo" id="oSM-ht-3HB" customClass="CollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVF-Xf-Ydj">
-                                                    <rect key="frame" x="-100" y="-39" width="240" height="128"/>
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVF-Xf-Ydj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="Cc2-vn-HP2"/>
+                                                        <constraint firstAttribute="width" constant="200" id="fGZ-vw-0zl"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="qVF-Xf-Ydj" firstAttribute="centerX" secondItem="oSM-ht-3HB" secondAttribute="centerX" id="AKD-KJ-b7b"/>
+                                            <constraint firstItem="qVF-Xf-Ydj" firstAttribute="centerY" secondItem="oSM-ht-3HB" secondAttribute="centerY" id="TUC-wV-iHr"/>
+                                        </constraints>
+                                        <size key="customSize" width="200" height="200"/>
                                         <connections>
                                             <outlet property="cellImage" destination="qVF-Xf-Ydj" id="kN6-as-Aze"/>
                                         </connections>

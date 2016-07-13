@@ -26,6 +26,8 @@
     
     self.userPhotoArray = [[NSMutableArray alloc] init];
     
+    self.cell = [[CollectionViewCell alloc] init];
+    
     [self.userPhotoCollection reloadData];
     
     [self.userPhotoCollection registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Photo"];
@@ -58,9 +60,9 @@
     
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil); //2
     
-    //[image setItemSize:CGSizeMake(320, 548)];
-    
     [self.userPhotoArray addObject:image];
+    
+    [self.userPhotoCollection reloadData];
     
     NSData* data = UIImagePNGRepresentation(image);
     
@@ -72,15 +74,21 @@
                                                                        }];
 */
     
+    //[FIRAnalytics setUserPropertyString:@"" forName:<#(nonnull NSString *)#>]
+    
 }
 
-//Adjusting an image's size
-- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+
+- (UIImage*)imageWithImage: (UIImage*) sourceImage scaledToWidth: (float) i_width{
+    
+    float newWidth = i_width;
+    float newHeight = newWidth;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [sourceImage drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    return destImage;
+    return newImage;
 }
 
 //Setting the number of cells to match the objects in the array
@@ -94,38 +102,23 @@
     
     self.cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"Photo" forIndexPath:indexPath];
     
-    UIImageView *recipeImageView = (UIImageView *)[self.cell viewWithTag:100];
+    UIImage* imageFromArray = [self.userPhotoArray objectAtIndex:indexPath.row];
     
-    recipeImageView.image = [UIImage imageNamed:[self.userPhotoArray objectAtIndex:indexPath.row]];
-    
-    //recipeImageView.image = [self imageWithImage:recipeImageView.image convertToSize:??];
-    
-    self.cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"border"]];
-    
-    [self.view addSubview:recipeImageView];
-    
-    self.cell.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:[self.userPhotoArray objectAtIndex:indexPath.row]]];
-    
-    //self.cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    //self.cell.cellImage = (UIImageView *)[self.cell viewWithTag:100];
-    //self.cell.cellImage.image = [self.userPhotoArray objectAtIndex:indexPath.row];
+    self.cell.backgroundColor=[UIColor colorWithPatternImage:[self imageWithImage:imageFromArray scaledToWidth:125]];
     
     return self.cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(125.f, 125.f);
 }
- 
+
+/*
  1 = removed http://stackoverflow.com/questions/12143028/add-to-nsdictionary-entries-to-nsmutabledictionary
  2 = http://stackoverflow.com/questions/11131050/how-can-i-save-an-image-to-the-camera-roll
  3 = http://stackoverflow.com/questions/25923567/nsdata-on-firebase
+ 4 = adjusting size based on orinetation: http://stackoverflow.com/questions/13556554/change-uicollectionviewcell-size-on-different-device-orientations
  
  URL = :@"https://quicpic-aeb2d.firebaseio.com"
 
